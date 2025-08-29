@@ -28,19 +28,19 @@ nnoremap("<leader>q", "<cmd>q<cr>", { silent = false })
 nnoremap("<leader>z", "<cmd>wq<cr>", { silent = false })
 
 -- Center buffer while navigating
-nnoremap("<C-u>", "<C-u>zz")
-nnoremap("<C-d>", "<C-d>zz")
-nnoremap("{", "{zz")
-nnoremap("}", "}zz")
-nnoremap("N", "Nzz")
-nnoremap("n", "nzz")
-nnoremap("G", "Gzz")
-nnoremap("gg", "ggzz")
-nnoremap("<C-i>", "<C-i>zz")
-nnoremap("<C-o>", "<C-o>zz")
-nnoremap("%", "%zz")
-nnoremap("*", "*zz")
-nnoremap("#", "#zz")
+-- nnoremap("<C-u>", "<C-u>zz")
+-- nnoremap("<C-d>", "<C-d>zz")
+-- nnoremap("{", "{zz")
+-- nnoremap("}", "}zz")
+-- nnoremap("N", "Nzz")
+-- nnoremap("n", "nzz")
+-- nnoremap("G", "Gzz")
+-- nnoremap("gg", "ggzz")
+-- nnoremap("<C-i>", "<C-i>zz")
+-- nnoremap("<C-o>", "<C-o>zz")
+-- nnoremap("%", "%zz")
+-- nnoremap("*", "*zz")
+-- nnoremap("#", "#zz")
 
 -- Press 'S' for quick find/replace for the word under the cursor
 nnoremap("S", function()
@@ -315,7 +315,6 @@ nnoremap("<leader>op", ":ObsidianPasteImage<CR>", { desc = "Paste image from cli
 nnoremap("<leader>ot", ":ObsidianTemplate<CR>", { desc = "Insert template" })
 
 -- Oil
-nnoremap("-", ":Oil --float<CR>", { desc = "Open [O]il" })
 nnoremap("<leader>x", ":Oil<CR>", { desc = "Open [O]il" })
 
 -- Reenable default <space> functionality to prevent input delay

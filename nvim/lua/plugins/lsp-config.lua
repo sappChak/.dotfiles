@@ -133,6 +133,9 @@ return {
 									enable = false,
 								},
 							},
+							check = {
+								command = "clippy",
+							},
 						},
 					},
 				},

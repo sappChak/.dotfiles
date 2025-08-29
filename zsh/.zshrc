@@ -3,7 +3,7 @@
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.config/zsh/oh-my-zsh"
-# export PATH=$PATH:~/.local/bin
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 alias vim='nvim'
 
 # export QT_STYLE_OVERRIDE=Adwaita-Dark

@@ -22,6 +22,9 @@ vim.o.background = "dark"
 -- Ensures that the status line is always visible, providing useful information about the current file and mode.
 vim.opt.laststatus = 3
 
+-- Enable auto read when files change
+vim.opt.autoread = true
+
 -- Disable line wrapping
 -- Prevents lines from wrapping, which can be useful for code readability.
 vim.opt.wrap = false
@@ -134,16 +137,6 @@ vim.opt.signcolumn = "yes"
 -- Makes searches case-insensitive unless a capital letter or \C is used in the search pattern.
 vim.o.ignorecase = true
 vim.o.smartcase = true
-
--- more useful diffs (nvim -d)
--- by ignoring whitespace
--- vim.opt.diffopt:append('iwhite')
--- and using a smarter algorithm
--- https://vimways.org/2018/the-power-of-diff/
--- https://stackoverflow.com/questions/32365271/whats-the-difference-between-git-diff-patience-and-git-diff-histogram
--- https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
--- vim.opt.diffopt:append('algorithm:histogram')
--- vim.opt.diffopt:append('indent-heuristic')
 
 -- Keep signcolumn on by default
 -- Ensures that the sign column is always visible, preventing the screen from shifting.

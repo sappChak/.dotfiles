@@ -6,7 +6,7 @@ font-size = 15
 theme = Adventure
 # theme = Bright Lights
 
-window-decoration = false 
+window-decoration = server 
 keybind = ctrl+shift+f5=reload_config
 confirm-close-surface = false
 
