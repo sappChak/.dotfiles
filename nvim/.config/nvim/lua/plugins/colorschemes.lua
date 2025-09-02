@@ -83,7 +83,7 @@ return {
 		end,
 	},
 	{
-		"blazkowolf/gruber-darker.nvim",
+		"sappChak/gruber-darker.nvim",
 		config = function()
 			require("gruber-darker").setup({
 				bold = false,
