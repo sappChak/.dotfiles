@@ -11,7 +11,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- [[ Configure plugins ]]
 require("vim-options")
 require("lazy").setup("plugins", {
 	change_detection = {
@@ -24,7 +23,6 @@ require("lazy").setup("plugins", {
 				"gzip",
 				"matchit",
 				"matchparen",
-				"man",
 				"rplugin",
 				"netrwPlugin",
 				"tarPlugin",
@@ -35,6 +33,7 @@ require("lazy").setup("plugins", {
 		},
 	},
 })
+
 require("user")
 -- Enable telescope fzf native, if installed
 pcall(require("telescope").load_extension, "fzf")
@@ -45,7 +44,8 @@ local function find_git_root()
 	local current_file = vim.api.nvim_buf_get_name(0)
 	local current_dir = current_file ~= "" and vim.fn.fnamemodify(current_file, ":h") or vim.fn.getcwd()
 
-	local git_root = vim.fn.systemlist("git -C " .. vim.fn.escape(current_dir, " ") .. " rev-parse --show-toplevel")[1]
+	local git_root = vim.fn.systemlist("git -C " .. vim.fn.escape(current_dir, " ") .. " rev-parse --show-toplevel")
+	    [1]
 	if vim.v.shell_error ~= 0 then
 		print("Not a git repository. Searching in the current working directory")
 		return vim.fn.getcwd()
