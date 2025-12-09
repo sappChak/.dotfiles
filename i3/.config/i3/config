@@ -34,21 +34,32 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 # Volume up
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 
+# Config so that the audio controls are working
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPause exec --no-startup-id playerctl pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+exec_always --no-startup-id (sleep 5 && xset r rate 200 40)&
+
+# Something related to privelages and passwords, had a problem with virt-manager
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
 # Screenshots
-bindsym Ctrl+Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
-bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
+# bindsym Ctrl+Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
+# bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
 # bindsym Ctrl+Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
 
 # Full screen screenshot with Flameshot GUI
 # bindsym Print exec --no-startup-id flameshot gui
 
 # Screenshot of selected region with Flameshot GUI
-bindsym Ctrl+Shift+Print exec --no-startup-id flameshot gui
+bindsym $mod+Print exec --no-startup-id flameshot gui
 
 # Clipboard Screenshots
-bindsym Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
-bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
-bindsym Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+# bindsym Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+# bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+# bindsym Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 # Start XDG autostart .desktop files using dex
 exec --no-startup-id dex --autostart --environment i3
@@ -56,23 +67,26 @@ exec --no-startup-id dex --autostart --environment i3
 # Lock screen before suspend
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
+# Switch languages
+# exec --no-startup-id setxkbmap -layout us,ru,ua -option grp:ctrl_shift_toggle
+# exec --no-startup-id setxkbmap -layout us,ru,ua -option grp:ctrl_shift_toggle
+# exec --no-startup-id setxkbmap -layout us,ua -option 'grp:alt_shift_toggle'
+
 # NetworkManager applet
 exec --no-startup-id nm-applet
 
 # Floating window modifier
 floating_modifier $mod
 
-# Set keyboard repeat rate
-exec_always --no-startup-id (sleep 5 && xset r rate 200 40)&
-
-# Start the main terminal
-bindsym $mod+Return exec alacritty 
+# Set keyboard repeat rat
+bindsym $mod+Return exec kitty 
 
 # Kill focused window
 bindsym $mod+Shift+q kill
 
 # Start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym Super_L exec --no-startup-id dmenu_run
 
 # Change focus
 bindsym $mod+h focus left
@@ -184,6 +198,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar
 bar {
     status_command i3status
+    # status_command i3blocks
     position bottom 
 }
 
