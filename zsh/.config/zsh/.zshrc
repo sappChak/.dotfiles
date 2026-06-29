@@ -4,12 +4,13 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.config/zsh/oh-my-zsh"
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+export PATH="$HOME/.cargo/bin:$PATH"
 alias vim='nvim'
 
 # export QT_STYLE_OVERRIDE=Adwaita-Dark
 export QT_QPA_PLATFORMTHEME=gtk2
 # browse man pages with neovim
-# export MANPAGER="nvim +Man!"
+export MANPAGER="nvim +Man!"
 # export PAGER="nvim -c 'set ft=man' -"
 
 # export PATH="$PATH:/opt/nvim/"
@@ -127,3 +128,5 @@ bindkey -v
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="/home/sappchak/.local/bin:$PATH"

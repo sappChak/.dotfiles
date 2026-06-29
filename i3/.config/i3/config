@@ -13,12 +13,17 @@ bindsym XF86KbdBrightnessUp exec --no-startup-id \
 bindsym XF86KbdBrightnessDown exec --no-startup-id \
   sh -c 'cur=$(cat /sys/class/leds/dell::kbd_backlight/brightness); [ $cur -gt 0 ] && echo $((cur-1)) > /sys/class/leds/dell::kbd_backlight/brightness'
 
+# Set modifier key
+set $mod Mod1
+
 # Reading mode (warm colors)
 bindsym $mod+Shift+n exec "redshift -O 4000"  
 bindsym $mod+Shift+m exec "redshift -x"       
 
-# Set modifier key
-set $mod Mod1
+# Layout switch related thing
+exec_always --no-startup-id setxkbmap -layout "us,ua,ru"
+exec_always --no-startup-id xkb-switch-i3
+bindsym $mod+space exec --no-startup-id "xkb-switch -n"
 
 # Font for window titles and bar
 font pango:JetBrainsMono Nerd Font 9
@@ -124,7 +129,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # Change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # Focus parent container
 bindsym $mod+a focus parent

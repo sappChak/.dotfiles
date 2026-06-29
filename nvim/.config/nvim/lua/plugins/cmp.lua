@@ -1,5 +1,6 @@
 ---@diagnostic disable: missing-fields
 return {
+
 	{
 		"hrsh7th/nvim-cmp",
 		event = { "BufReadPost", "BufNewFile" },
@@ -12,11 +13,10 @@ return {
 			"rafamadriz/friendly-snippets",
 			"onsails/lspkind.nvim",
 			"windwp/nvim-ts-autotag",
-			"windwp/nvim-autopairs",
-		},
+			"windwp/nvim-autopairs", },
 		config = function()
-			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			local cmp = require("cmp")
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			local luasnip = require("luasnip")
 			local lspkind = require("lspkind")
 
@@ -27,7 +27,6 @@ return {
 
 			-- Load snippets
 			require("luasnip.loaders.from_vscode").lazy_load()
-
 			cmp.setup({
 				snippet = {
 					expand = function(args)
@@ -67,10 +66,11 @@ return {
 				}),
 				-- sources for autocompletion
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp" }, -- lsp
-					{ name = "buffer", max_item_count = 5 }, -- text within current buffer
-					-- { name = "copilot" }, -- Copilot suggestions
-					{ name = "path", max_item_count = 3 }, -- file system paths
+					{ name = "nvim_lsp" },
+					{ name = "buffer",  max_item_count = 5 }, -- text within current buffer
+					{ name = "lazydev", group_index = 0 },
+					{ name = "copilot" }, -- Copilot suggestions
+					{ name = "path",    max_item_count = 3 }, -- file system paths
 					{ name = "luasnip", max_item_count = 3 }, -- snippets
 				}),
 				-- Enable pictogram icons for lsp/autocompletion

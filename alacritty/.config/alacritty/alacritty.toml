@@ -2,7 +2,7 @@
 cursor = '0xffffff'
 
 [font]
-size = 10
+size = 8.5
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"

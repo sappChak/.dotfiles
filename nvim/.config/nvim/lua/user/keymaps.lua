@@ -25,21 +25,6 @@ nnoremap("<leader>q", "<cmd>q<cr>", { silent = false })
 -- Save and Quit with leader key
 nnoremap("<leader>z", "<cmd>wq<cr>", { silent = false })
 
--- Center buffer while navigating
--- nnoremap("<C-u>", "<C-u>zz")
--- nnoremap("<C-d>", "<C-d>zz")
--- nnoremap("{", "{zz")
--- nnoremap("}", "}zz")
--- nnoremap("N", "Nzz")
--- nnoremap("n", "nzz")
--- nnoremap("G", "Gzz")
--- nnoremap("gg", "ggzz")
--- nnoremap("<C-i>", "<C-i>zz")
--- nnoremap("<C-o>", "<C-o>zz")
--- nnoremap("%", "%zz")
--- nnoremap("*", "*zz")
--- nnoremap("#", "#zz")
-
 -- Press 'S' for quick find/replace for the word under the cursor
 nnoremap("S", function()
 	local cmd = ":%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>"
@@ -114,7 +99,9 @@ nnoremap("<leader>ld", vim.diagnostic.setqflist, { desc = "Quickfix [L]ist [D]ia
 nnoremap("<leader>=", "<C-w>=")
 
 -- Press leader fm to format
-nnoremap("<leader>fm", ":Format<cr>")
+nnoremap("<leader>fm", function()
+	require("conform").format({ async = true, lsp_format = "fallback" })
+end, { desc = "Format buffer" })
 
 -- Press leader rw to rotate open windows
 nnoremap("<leader>rw", ":RotateWindows<cr>", { desc = "[R]otate [W]indows" })
@@ -318,5 +305,44 @@ nnoremap("<leader>x", ":Oil<CR>", { desc = "Open [O]il" })
 
 -- Reenable default <space> functionality to prevent input delay
 tnoremap("<space>", "<space>")
+
+-- zt-nvim (Zettelkasten)
+-- Create notes
+nnoremap("<leader>zf", "<Cmd>ZkNew { dir = 'inbox' }<CR>")                                    -- fleeting
+nnoremap("<leader>zl", "<Cmd>ZkNew { dir = 'sources', title = vim.fn.input('Title: ') }<CR>") -- literature
+nnoremap("<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>")                  -- permanent
+nnoremap("<leader>zj", "<Cmd>ZkNew {dir = 'journal' }<CR>")                                   -- journal
+
+-- Navigate
+nnoremap("<leader>zo", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>") -- open notes
+nnoremap("<leader>zt", "<Cmd>ZkTags<CR>")                            -- browse tags
+nnoremap("<leader>zs", "<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>")
+
+-- In-note navigation (active when inside a markdown file)
+nnoremap("<leader>zb", "<Cmd>ZkBacklinks<CR>") -- what links here
+nnoremap("<leader>zi", "<Cmd>ZkLinks<CR>")     -- what this links to
+
+-- Visual selection → new note
+vnoremap("<leader>znt", ":'<,'>ZkNewFromTitleSelection<CR>")
+vnoremap("<leader>znc", ":'<,'>ZkNewFromContentSelection<CR>")
+
+-- Toggle markdown checkboxes with <leader>x
+nnoremap("<leader><CR>", function()
+	local line = vim.api.nvim_get_current_line()
+	local updated_line
+
+	if line:match("%-%s*%[%s*%]") then
+		-- Toggle unchecked to checked
+		updated_line = line:gsub("%-%s*%[%s*%]", "- [x]", 1)
+	elseif line:match("%-%s*%[%x*%]") then
+		-- Toggle checked to unchecked
+		updated_line = line:gsub("%-%s*%[%x*%]", "- [ ]", 1)
+	else
+		-- If no checkbox exists, prepend an empty one
+		updated_line = line:gsub("^%s*", "%1- [ ] ")
+	end
+
+	vim.api.nvim_set_current_line(updated_line)
+end, { desc = "Toggle Markdown Todo Item" })
 
 return M

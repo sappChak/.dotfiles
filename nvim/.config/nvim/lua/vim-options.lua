@@ -5,9 +5,7 @@ vim.g.mapleader = " "
 -- Highlights the line where the cursor is located, making it easier to track the cursor's position.
 vim.opt.cursorline = false
 
--- Set encoding to UTF-8
--- Ensures that files are read and written using UTF-8 encoding.
-vim.opt.encoding = "utf-8"
+-- Set file encoding to UTF-8
 vim.opt.fileencoding = "utf-8"
 
 -- Set GUI cursor to empty
@@ -56,17 +54,9 @@ vim.g.colors_name = "gruber-darker"
 -- Prevents the creation of swap files, which can save disk space and reduce clutter.
 vim.o.swapfile = false
 
--- Set last status line to always display
--- Ensures that the status line is always visible, providing useful information about the current file and mode.
-vim.opt.laststatus = 2
-
 -- Set local shift width to 2
 -- Defines the number of spaces to use for each step of (auto)indent.
-vim.opt_local.shiftwidth = 2
-
--- Set command line height to 1
--- Increases the height of the command line area, providing more space for command input.
--- vim.opt.cmdheight = 1
+vim.opt.shiftwidth = 2
 
 -- Enable hidden buffers
 -- Allows buffers to be hidden without being saved, which can improve workflow efficiency.
@@ -74,7 +64,7 @@ vim.opt.hidden = true
 
 -- Show matching brackets
 -- Highlights matching brackets when the cursor is over them, making it easier to identify code blocks.
-vim.opt.showmatch = true
+vim.opt.showmatch = false
 
 -- Set scroll offset to 10
 -- Keeps 10 lines visible above and below the cursor, improving context visibility.
@@ -92,9 +82,6 @@ vim.o.autoindent = true
 -- Makes indentation smarter, based on the syntax of the code.
 vim.o.smartindent = true
 
--- Set tabs to have 2 spaces
--- Defines the number of spaces to use for each tab character.
-vim.o.expandtab = true
 
 -- Disable highlight on search
 -- Prevents search matches from being highlighted, which can reduce visual clutter.
@@ -110,7 +97,6 @@ vim.o.mouse = "a"
 
 -- Enable relative line numbers
 -- Displays line numbers relative to the current line, which can be useful for navigation.
-vim.opt.nu = true
 vim.opt.rnu = true
 
 -- Set clipboard to unnamedplus
@@ -138,9 +124,6 @@ vim.opt.signcolumn = "yes"
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
--- Keep signcolumn on by default
--- Ensures that the sign column is always visible, preventing the screen from shifting.
-vim.wo.signcolumn = "yes"
 
 -- Decrease update time
 -- Reduces the time Vim waits before triggering the CursorHold event, improving responsiveness.
@@ -158,9 +141,7 @@ vim.opt.splitbelow = true
 -- Opens new vertical splits to the right of the current window, improving window management.
 vim.opt.splitright = true
 
--- Don't redraw while executing macros (good performance config)
--- Prevents screen redraws while executing macros, improving performance.
-vim.opt.lazyredraw = true
+
 
 -- Defines the maximum width of text before wrapping, which can improve readability.
 vim.opt.textwidth = 90
