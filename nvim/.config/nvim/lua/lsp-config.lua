@@ -3,29 +3,30 @@ vim.lsp.config["lua-language-server"] = {
 	root_markers = { ".luarc.json" },
 	filetypes = { "lua" },
 }
-
 vim.lsp.enable({ 'lua-language-server' })
 
-vim.lsp.config.clangd = {
+vim.lsp.config["clangd"] = {
 	cmd = { 'clangd', "--fallback-style=Google", "--background-index", "--clang-tidy" },
 	root_markers = { 'compile_commands.json', 'compile_flags.txt' },
 	filetypes = { 'c', 'cpp' },
 }
-
 vim.lsp.enable({ 'clangd' })
 
-vim.lsp.config.rust_analyzer = {
-	cmd = { 'rust-analyzer' },
-	root_markers = { 'Cargo.toml', 'rust-project.json', '.git' },
-	filetypes = { 'rust' },
+vim.lsp.config["rust_analyzer"] = {
 	settings = {
-		['rust-analyzer'] = {
+		["rust-analyzer"] = {
 			cargo = {
-				allFeatures = true,
+				features = "all",
+			},
+			checkOnSave = {
+				enable = true,
+			},
+			check = {
+				command = "clippy",
 			},
 			imports = {
 				group = {
-					enable = true,
+					enable = false,
 				},
 			},
 			completion = {
@@ -33,14 +34,11 @@ vim.lsp.config.rust_analyzer = {
 					enable = false,
 				},
 			},
-			check = {
-				command = "clippy",
-			},
 		},
 	},
 }
+vim.lsp.enable({ 'rust_analyzer' })
 
--- vim.lsp.enable('rust_analyzer')
 
 vim.lsp.config.pyright = {
 	cmd = { 'pyright-langserver', '--stdio' },

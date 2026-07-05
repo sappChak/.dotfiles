@@ -1,4 +1,4 @@
 ## Dotfiles 
 
-The repo was 'git push --forced'ed multiple times. Hopefully, it won't happen again. -_-
+'git push --force' is second nature to this repo -_-
 
