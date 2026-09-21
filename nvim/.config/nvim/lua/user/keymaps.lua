@@ -6,6 +6,7 @@ local xnoremap = require("user.keymap_utils").xnoremap
 local utils = require("user.utils")
 local harpoon_ui = require("harpoon.ui")
 local harpoon_mark = require("harpoon.mark")
+local zk = require("zk")
 
 local M = {}
 
@@ -306,16 +307,19 @@ nnoremap("<leader>x", ":Oil<CR>", { desc = "Open [O]il" })
 -- Reenable default <space> functionality to prevent input delay
 tnoremap("<space>", "<space>")
 
--- zt-nvim (Zettelkasten)
+-- zk-nvim (Zettelkasten)
 -- Create notes
-nnoremap("<leader>zf", "<Cmd>ZkNew { dir = 'inbox' }<CR>")                                    -- fleeting
-nnoremap("<leader>zl", "<Cmd>ZkNew { dir = 'sources', title = vim.fn.input('Title: ') }<CR>") -- literature
-nnoremap("<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>")                  -- permanent
-nnoremap("<leader>zj", "<Cmd>ZkNew {dir = 'journal' }<CR>")                                   -- journal
+nnoremap("<leader>zf", "<Cmd>ZkNew { dir = 'inbox' }<CR>")
+nnoremap("<leader>zl", "<Cmd>ZkNew { dir = 'sources', title = vim.fn.input('Title: ') }<CR>")
+nnoremap("<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Permanent Note Title: ') }<CR>")
+nnoremap("<leader>zm", "<Cmd>ZkNew { dir = 'structures', title = vim.fn.input('Structure Note Title: ') }<CR>")
+nnoremap("<leader>zj", "<Cmd>ZkNew { dir = 'journal' }<CR>")
+-- nnoremap("<leader>zw", "<Cmd>ZkNew { dir = 'planning/weekly' }<CR>")
+-- nnoremap("<leader>zs", "<Cmd>ZkNew { dir = 'planning/strategic' }<CR>")
 
 -- Navigate
-nnoremap("<leader>zo", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>") -- open notes
-nnoremap("<leader>zt", "<Cmd>ZkTags<CR>")                            -- browse tags
+nnoremap("<leader>zo", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>")
+nnoremap("<leader>zt", "<Cmd>ZkTags<CR>")
 nnoremap("<leader>zs", "<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>")
 
 -- In-note navigation (active when inside a markdown file)

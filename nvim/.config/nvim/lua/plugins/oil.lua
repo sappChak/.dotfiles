@@ -5,9 +5,9 @@ return {
 		delete_to_trash = true,
 		columns = {
 			"icon",
-			-- "permissions",
+			"permissions",
 			"size",
-			-- "mtime",
+			"mtime",
 		},
 		float = {
 			padding = 2,

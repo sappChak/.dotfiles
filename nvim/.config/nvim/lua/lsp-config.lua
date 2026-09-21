@@ -39,6 +39,13 @@ vim.lsp.config["rust_analyzer"] = {
 }
 vim.lsp.enable({ 'rust_analyzer' })
 
+vim.lsp.config.gopls = {
+	cmd = { 'gopls' },
+	root_markers = { 'go.mod', '.git' },
+	filetypes = { 'go' },
+}
+vim.lsp.enable({ 'gopls' })
+
 
 vim.lsp.config.pyright = {
 	cmd = { 'pyright-langserver', '--stdio' },
