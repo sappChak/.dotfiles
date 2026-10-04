@@ -36,10 +36,6 @@ battery all {
         format = "%status %percentage %remaining"
 }
 
-keyboard_layout {
-    format = "%layout (%variant)"
-}
-
 disk "/" {
         format = "/: %avail"
 }
