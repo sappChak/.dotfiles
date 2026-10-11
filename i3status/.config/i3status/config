@@ -21,6 +21,7 @@ order += "load"
 order += "cpu_temperature 0"
 order += "memory"
 order += "tztime local"
+# order += "read_file uptime"
 
 wireless _first_ {
         format_up = "W: (%quality at %essid) %ip"
@@ -58,4 +59,8 @@ memory {
 
 tztime local {
         format = "%Y-%m-%d %H:%M:%S"
+}
+
+read_file uptime {
+        path = "/proc/uptime"
 }

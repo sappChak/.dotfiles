@@ -1,6 +1,9 @@
 # Start picom for compositing
 exec --no-startup-id picom --config ~/.config/picom.conf -b
 
+# Change display layout automatically
+exec_always --no-startup-id autorandr --change
+
 # Backlight controls
 bindsym XF86MonBrightnessUp exec brightnessctl -c backlight set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl -c backlight set 5%-
@@ -201,4 +204,4 @@ bar {
 }
 
 # Restore wallpaper
-exec --no-startup-id nitrogen --restore
+exec_always --no-startup-id nitrogen --restore

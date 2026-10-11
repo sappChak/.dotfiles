@@ -7,6 +7,8 @@ export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export PATH="$HOME/.cargo/bin:$PATH"
 alias vim='nvim'
 
+export QT_QPA_PLATFORMTHEME=qt5ct
+
 # export QT_STYLE_OVERRIDE=Adwaita-Dark
 export QT_QPA_PLATFORMTHEME=gtk2
 # browse man pages with neovim

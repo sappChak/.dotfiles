@@ -47,7 +47,7 @@ vim.g.maplocalleader = " "
 -- Allows for a wider range of colors in the terminal, improving the appearance of the editor.
 vim.opt.termguicolors = true
 
--- Set color scheme to vscode
+-- Set color scheme to gruber-darker
 vim.g.colors_name = "gruber-darker"
 
 -- Disable swap file
